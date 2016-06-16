@@ -22,7 +22,7 @@ background-color:#eeeeee;
 body
 {
 width:1024px;
-margin:auto;
+margin: auto;
 border-left:1px solid #004d99;
 border-right:1px solid #004d99;
 min-height:659px;
@@ -70,6 +70,8 @@ background-color:white
 #content
 {
 height:439px;
+padding-top: 20px;
+padding-left: 40px;
 background-color: #f9f9f9;
 }
  
@@ -142,18 +144,21 @@ font-style:italic
 	margin-left: 4px;		
 }
 
-#komunikat {
+#komunikat 
+{
 	background-color: #ff8000;
 	border: solid 2px orange;
 	text-align: center;
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
-.db-red {
+.db-red 
+{
 	background-color: #f07502;
 	color: black;
 }
-.db-green {
+.db-green 
+{
 	background-color: lightgreen;
 	color: black;
 }

@@ -5,9 +5,11 @@ require 'kodphp.inc.php';
 <!DOCTYPE html>
 <html lang="pl">
   <head>
+   <script src="bootstrap.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+   <link rel="Stylesheet" type="text/css" href="style.css">
+   <title>Witryna firmy Sofcik</title>
    <meta charset="UTF-8" >
-   <link rel="Stylesheet" href="style.css">
-   <title>Przykładowa strona www wykonana w HTML 5</title>
    <meta name="Description" content="Strona firmy Sofcik" >
    <meta name="keywords" content="sofcik, oprogramowanie">
    <meta name="author" content="Sofcik">
@@ -45,19 +47,25 @@ if (isset($_GET['podstrona'])) {
       break;    
     case 'kontakt':
     ?>
-      <section id="content"><h1>Kontakt</h1>
-      <p>
-        Sofcik</br>
-        ul. Uliczna 1</br>
-        99-123 Miastowo
-      </p>
-      <h2>Formularz kontaktowy</h2>
-      <form action="index.php" method="POST">
-        Imię i nazwisko: <input type="text" name="nazwisko" size="50"></br>
-        E-mail: <input type="text" name="email"></br>
-        Wiadomość: <textarea rows="8" cols="80" name="wiadomosc"></textarea></br>
-        <input type="submit" name="form_kontakt" value="Wyślij">
-      </form>
+      <section id="content">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>Formularz kontaktowy</h2>
+          <form action="index.php" method="POST">
+            Imię i nazwisko: <input type="text" name="nazwisko"></br>
+            E-mail: <input type="text" name="email"></br>
+            Wiadomość:</br>
+            <textarea rows="8" cols="40" name="wiadomosc"></textarea></br>
+            <input class="btn btn-primary" type="submit" name="form_kontakt" value="Wyślij">
+          </form>
+        </div>
+        <div class="col-sm-6">
+          <h1>Kontakt</h1>
+          Sofcik</br>
+          ul. Uliczna 1</br>
+          99-123 Miastowo
+        </div>
+      </div>
       </section>
     <?php
       break;
@@ -67,7 +75,7 @@ if (isset($_GET['podstrona'])) {
       <form action="index.php" method="POST">
         Login: <input type="text" name="login"></br>
         Hasło: <input type="password" name="haslo"></br>
-        <input type="submit" name="logowanie" value="Zaloguj">
+        <input class="btn btn-primary" type="submit" name="logowanie" value="Zaloguj">
       </form>
       </section>
     <?php
@@ -85,12 +93,12 @@ if (isset($_GET['podstrona'])) {
       <?php
              displayproducts();  ?>
     </section>
-<?php 
+    <?php 
 
       break;
     case 'lista_zgloszen':
       echo '<section id="content"><h1>Lista twoich zgłoszeń</h1>';
-?>
+    ?>
       <form action="index.php" method="POST">
       <table>
       <tr><td>Nazwa</td><td>j.m.</td><td>Ilość</td><td>cena netto</td></tr>
