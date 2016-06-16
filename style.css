@@ -34,6 +34,18 @@ height:120px;
 background-color:#004d99
 }
  
+input
+{
+margin-top: 2px;
+margin-bottom:  2px;
+}
+
+textarea
+{
+margin-top: 2px;
+margin-bottom:  2px;
+}
+
 h1 a
 {
 padding-left:50px;

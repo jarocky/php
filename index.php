@@ -37,9 +37,6 @@ require 'kodphp.inc.php';
     </nav>
   </header>
 <?php
-if (isset($komunikat)) { 
-  echo '<section id="komunikat">' . $komunikat . '</h2></section>';
-}
 if (isset($_GET['podstrona'])) {
   switch ($_GET['podstrona']) {
     case 'oferta':
@@ -52,11 +49,13 @@ if (isset($_GET['podstrona'])) {
         <div class="col-sm-6">
           <h2>Formularz kontaktowy</h2>
           <form action="index.php" method="POST">
-            Imię i nazwisko: <input type="text" name="nazwisko"></br>
-            E-mail: <input type="text" name="email"></br>
-            Wiadomość:</br>
-            <textarea rows="8" cols="40" name="wiadomosc"></textarea></br>
-            <input class="btn btn-primary" type="submit" name="form_kontakt" value="Wyślij">
+              Imię i nazwisko:</br>
+              <input type="text" name="nazwisko"></br>
+              E-mail:</br>
+              <input type="text" name="email"></br>
+              Wiadomość:</br>                  
+              <textarea rows="8" cols="40" name="wiadomosc"></textarea></br>
+              <input class="btn btn-primary" type="submit" name="form_kontakt" value="Wyślij">
           </form>
         </div>
         <div class="col-sm-6">
@@ -72,11 +71,13 @@ if (isset($_GET['podstrona'])) {
     case 'logowanie':
     ?>
       <section id="content"><h1>Logowanie</h1>
-      <form action="index.php" method="POST">
-        Login: <input type="text" name="login"></br>
-        Hasło: <input type="password" name="haslo"></br>
-        <input class="btn btn-primary" type="submit" name="logowanie" value="Zaloguj">
-      </form>
+      <div class="row">
+        <form action="index.php" method="POST">
+          Login: <input type="text" name="login"></br>
+          Hasło: <input type="password" name="haslo"></br>
+          <input class="btn btn-primary" type="submit" name="logowanie" value="Zaloguj">
+        </form>
+      </div>
       </section>
     <?php
       break;
@@ -126,6 +127,9 @@ if (isset($_GET['podstrona'])) {
      oferując Państwu usługi informatyczne i nasze innowacyjne oprogramowanie.</p>
   </section>
 <?php 
+}
+if (isset($komunikat)) { 
+  echo '<section id="komunikat">' . $komunikat . '</h2></section>';
 }
 ?>
 
