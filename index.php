@@ -49,19 +49,19 @@ if (isset($_GET['podstrona'])) {
         <div class="col-sm-6">
           <h2>Formularz kontaktowy</h2>
           <form action="index.php" method="POST">
-              Imię i nazwisko:</br>
-              <input type="text" name="nazwisko"></br>
-              E-mail:</br>
-              <input type="text" name="email"></br>
-              Wiadomość:</br>                  
-              <textarea rows="8" cols="40" name="wiadomosc"></textarea></br>
+              Imię i nazwisko:<br/>
+              <input type="text" name="nazwisko"><br/>
+              E-mail:<br/>
+              <input type="text" name="email"><br/>
+              Wiadomość:<br/>                  
+              <textarea rows="8" cols="40" name="wiadomosc"></textarea><br/>
               <input class="btn btn-primary" type="submit" name="form_kontakt" value="Wyślij">
           </form>
         </div>
         <div class="col-sm-6">
           <h1>Kontakt</h1>
-          Sofcik</br>
-          ul. Uliczna 1</br>
+          Sofcik<br/>
+          ul. Uliczna 1<br/>
           99-123 Miastowo
         </div>
       </div>
@@ -73,8 +73,8 @@ if (isset($_GET['podstrona'])) {
       <section id="content"><h1>Logowanie</h1>
       <div class="row">
         <form action="index.php" method="POST">
-          Login: <input type="text" name="login"></br>
-          Hasło: <input type="password" name="haslo"></br>
+          Login:<br/> <input type="text" name="login"><br/>
+          Hasło:<br/> <input type="password" name="haslo"><br/>
           <input class="btn btn-primary" type="submit" name="logowanie" value="Zaloguj">
         </form>
       </div>
@@ -83,37 +83,31 @@ if (isset($_GET['podstrona'])) {
       break;
     case 'zgloszenie': ?>
     <section id="content"><h1>Zgłoszenie</h1>
-      <ul id="menu">
-        <li><a class="dbbutton" href="?action=createdb" title="Strona główna">Utwórz bazę danych</a></li>
-        <li><a class="dbbutton" href="?action=dropdb" title="Oferta">Usuń bazę daych</a></li>
-        <li><a class="dbbutton" href="?action=addtable" title="Tytuł linka">Dodaj tabelę produkty</a></li>
-        <li><a class="dbbutton" href="?action=addproduct" title="Tytuł linka">Dodaj produkt</a></li>
-        <li><a class="dbbutton" href="?action=delproduct" title="Tytuł linka">Usuń produkt id=1</a></li>      
-        <li><a class="dbbutton" href="?action=updateproduct" title="Tytuł linka">Aktualizuj produkt</a></li>      
-      </ul></br></br>
-      <?php
-             displayproducts();  ?>
+      <div class="row">
+        <form action="index.php" method="POST">
+          Temat zgłoszenia:<br/> <input type="text" name="temat"><br/>
+          Typ zgłoszenia:<br/>
+          <select name="typ">
+            <option value="Pytanie">Pytanie</option>
+            <option value="Problem">Problem</option>
+            <option value="Awaria">Awaria</option>
+          </select><br/>
+          Priorytet:<br/>
+          <select name="priorytet">
+            <option value="Niski">Niski</option>
+            <option value="Średni">Średni</option>
+            <option value="Wysoki">Wysoki</option>
+          </select><br/>
+          Opis zgłoszenia:<br/> <textarea name="opis" rows="5" cols="40"></textarea><br/>
+          <input class="btn btn-primary" type="submit" name="zgloszenie" value="Wyślij zgłoszenie">
+        </form>
+      </div>
     </section>
     <?php 
-
       break;
     case 'lista_zgloszen':
       echo '<section id="content"><h1>Lista twoich zgłoszeń</h1>';
-    ?>
-      <form action="index.php" method="POST">
-      <table>
-      <tr><td>Nazwa</td><td>j.m.</td><td>Ilość</td><td>cena netto</td></tr>
-      <tr><td><input type="text" name="nazwa" required></td>
-          <td><select name="nazwa" required>
-            <option selected>szt</option>
-            <option>kg</option>
-          </select></td>
-          <td><input type="text" name="ilosc" required></td>
-          <td><input type="text" name="cena" required></td></tr>
-      </table>
-      <input type="submit" name="dodaj_produkt" value="Dodaj produkt">
-      </form>
-<?php
+      displayRequests($_SESSION['zalogowany']);      
       echo '</section>';
       break;  
     default:

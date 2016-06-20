@@ -9,7 +9,7 @@ if(isset($_COOKIE['wizyta'])) {
 }
 
 if (isset($_POST['logowanie'])) {
-	if (($_POST['login']=='admin') && ($_POST['haslo']=='123')) {
+		if (login($_POST['login'], $_POST['haslo']) === true) {
 		$_SESSION['zalogowany']=$_POST['login'];
 		$komunikat='Witaj ' . $_POST['login'] . '. Zostałes poprawnie zalogowany.';
 	} else {
@@ -17,6 +17,11 @@ if (isset($_POST['logowanie'])) {
 		$_GET['podstrona']='logowanie';
 	}
 }
+
+if (isset($_POST['zgloszenie'])) {
+		addRequest($_SESSION['zalogowany'], $_POST['temat'], $_POST['typ'], $_POST['priorytet'], $_POST['opis']);
+		$komunikat='Wysłano zgłoszenie.';
+	}
 
 if (isset($_GET['wyloguj'])) {
 	unset($_SESSION['zalogowany']);
