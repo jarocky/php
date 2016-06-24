@@ -40,7 +40,13 @@ require 'kodphp.inc.php';
 if (isset($_GET['podstrona'])) {
   switch ($_GET['podstrona']) {
     case 'oferta':
-      echo '<section id="content"><h1>Oferta</h1></section>';
+      ?>
+  <section id="content">
+    <h1>Oferta</h1>
+    <p>VideoConverter to program służący do konwesji wideo pomiędzy róznymi formatami.</p>
+  </section>
+<?php 
+
       break;    
     case 'kontakt':
     ?>
@@ -55,7 +61,7 @@ if (isset($_GET['podstrona'])) {
               <input type="text" name="email"><br/>
               Wiadomość:<br/>                  
               <textarea rows="8" cols="40" name="wiadomosc"></textarea><br/>
-              <input class="btn btn-primary" type="submit" name="form_kontakt" value="Wyślij">
+              <input class="btn btn-primary" type="submit" name="kontakt" value="Wyślij">
           </form>
         </div>
         <div class="col-sm-6">

@@ -19,39 +19,29 @@ if (isset($_POST['logowanie'])) {
 }
 
 if (isset($_POST['zgloszenie'])) {
-		addRequest($_SESSION['zalogowany'], $_POST['temat'], $_POST['typ'], $_POST['priorytet'], $_POST['opis']);
-		$komunikat='Wysłano zgłoszenie.';
-	}
+		if(empty($_POST["temat"]) || empty($_POST["opis"]))	{
+			$komunikat='Nie wypełniono poprawnie wszystkich pól';
+			$_GET['podstrona']='zgloszenie';
+		} else {			
+			addRequest($_SESSION['zalogowany'], $_POST['temat'], $_POST['typ'], $_POST['priorytet'], $_POST['opis']);
+			$komunikat='Wysłano zgłoszenie';
+		};
+}
+
+if (isset($_POST['kontakt'])) {
+		if(empty($_POST["nazwisko"]) || empty($_POST["email"]) || empty($_POST["wiadomosc"])) {
+			$komunikat='Nie wypełniono poprawnie wszystkich pól';
+			$_GET['podstrona']='kontakt';
+		} else {
+			addMessage($_POST['nazwisko'], $_POST['email'], $_POST['wiadomosc']);
+			$komunikat='Wiadomość została wysłana';			
+		};
+}
 
 if (isset($_GET['wyloguj'])) {
 	unset($_SESSION['zalogowany']);
 	$komunikat='Zostałes poprawnie wylogowany';
 }
 
-if (isset($_GET['action'])) {
-	switch($_GET['action']) {
-		case "createdb":
-			createdb();
-			break;
-		case "dropdb":
-			dropdb();
-			break;
-		case "addtable":
-			addtable();
-			break;
-		case "addproduct":
-			addproduct();
-			break;
-		case "delproduct":
-			delproduct(1);
-			break;
-		case "updateproduct":
-			updateproduct();
-			break;
-		case "del":
-			delproduct($_GET['id']);
-			break;
-	}
-	$_GET['podstrona'] = "mysql";
-}
+
 ?>
